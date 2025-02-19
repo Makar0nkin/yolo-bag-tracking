@@ -13,7 +13,7 @@ def count_objects_in_region(input_video_path, output_video_path, model_path):
     video_writer = cv2.VideoWriter(output_video_path, cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
 
     region_points = [(200, 100), (450, 100)]
-    counter = solutions.ObjectCounter(region=region_points, model=model_path)
+    counter = solutions.ObjectCounter(region=region_points, model=model_path, verbose=False)
 
     while cap.isOpened():
         success, im0 = cap.read()
@@ -28,13 +28,20 @@ def count_objects_in_region(input_video_path, output_video_path, model_path):
     cv2.destroyAllWindows()
 
 parser = argparse.ArgumentParser(
-    prog='tracker',
-    description='Track and count bags on video',
+    prog="tracker",
+    description="Track and count bags on video",
     epilog="Example: python track.py -i video\input.mp4 -o video\output.mp4")
 
-parser.add_argument('-i', '--input', help='relative path to input video for tracking', required=True) 
-parser.add_argument('-o', '--output', help='relative path to output video', required=True) 
+parser.add_argument("-i", "--input", default="video\input", help="relative path to input folder with videos for tracking") 
+parser.add_argument("-o", "--output", default="video\output", help="relative path to output folder") 
 
 args = parser.parse_args()
 
-count_objects_in_region(args.input, args.output, "best.pt")
+input_filenames = os.listdir(args.input)
+
+input_paths = [os.path.join(args.input, fi) for fi in input_filenames]
+output_paths = [os.path.join(args.output, fi) for fi in input_filenames]
+
+for fi, fo in zip(input_paths, output_paths):
+    print(f"----- {fi} -----")
+    count_objects_in_region(fi, fo, "weights\\best.pt")
