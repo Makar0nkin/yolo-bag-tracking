@@ -1,7 +1,7 @@
 ## Run model
 1. Set up environment
     ```
-    conda env create --name <env_name> --file=environments.yml 
+    conda env create --name <env_name> --file=environment.yml 
     conda activate <env_name>
     ```
 2. Run
