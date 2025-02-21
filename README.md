@@ -1,4 +1,25 @@
 ## Run model
+
+### Docker
+1. Run container
+    ```
+    docker compose up -d
+    ```
+2. Go to bash
+    ```
+    docker exec -it yolo-bag-tracking-app-1 /bin/bash
+    ```
+2. Run
+    - train model
+        ```
+        python train.py
+        ```
+    - track and count objects (by default: input folder = video\input, output folder = video\output)
+        ```
+        python track.py -i <input folder> -o <output folder>
+        ```
+
+### Python
 1. Set up environment with python 3.10.16
     ```
     python -m venv venv
@@ -16,7 +37,9 @@
         ```
 
 
+
+
 ## Update environment data 
 ```
-conda env export > environment.yml
+pip freeze > requirements.txt
 ```
