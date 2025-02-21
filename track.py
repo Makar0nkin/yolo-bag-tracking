@@ -30,10 +30,10 @@ def count_objects_in_region(input_video_path, output_video_path, model_path):
 parser = argparse.ArgumentParser(
     prog="tracker",
     description="Track and count bags on video",
-    epilog="Example: python track.py -i video\input.mp4 -o video\output.mp4")
+    epilog="Example: python track.py -i video/input.mp4 -o video/output.mp4")
 
-parser.add_argument("-i", "--input", default="video\input", help="relative path to input folder with videos for tracking") 
-parser.add_argument("-o", "--output", default="video\output", help="relative path to output folder") 
+parser.add_argument("-i", "--input", default="video/input", help="relative path to input folder with videos for tracking") 
+parser.add_argument("-o", "--output", default="video/output", help="relative path to output folder") 
 
 args = parser.parse_args()
 
@@ -44,4 +44,4 @@ output_paths = [os.path.join(args.output, fi) for fi in input_filenames]
 
 for fi, fo in zip(input_paths, output_paths):
     print(f"----- {fi} -----")
-    count_objects_in_region(fi, fo, "weights\\best.pt")
+    count_objects_in_region(fi, fo, "weights/best.pt")

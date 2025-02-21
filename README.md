@@ -1,8 +1,9 @@
 ## Run model
-1. Set up environment
+1. Set up environment with python 3.10.16
     ```
-    conda env create --name <env_name> --file=environment.yml 
-    conda activate <env_name>
+    python -m venv venv
+    venv\Scripts\activate
+    python install -r requirements.txt
     ```
 2. Run
     - train model
