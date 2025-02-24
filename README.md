@@ -36,7 +36,14 @@
         python track.py -i <input folder> -o <output folder>
         ```
 
-
+In case of throwing error in `train.py` about wrong dataset directory change `settings.json`:
+```
+{
+    ...
+    "datasets_dir": "datasets",
+    ...
+}
+```
 
 
 ## Update environment data 

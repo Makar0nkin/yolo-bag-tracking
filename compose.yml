@@ -3,9 +3,9 @@ services:
         build: ./
         volumes: 
             - ./video:/usr/src/app/video
-            - ./runs:/usr/src/app/runs
             - ./weights:/usr/src/app/weights
-            - ./dataset:/usr/src/app/dataset
             - ./track.py:/usr/src/app/track.py
             - ./train.py:/usr/src/app/train.py
+            - ./runs:/ultralytics/runs
+            - ./dataset:/dataset
         tty: true

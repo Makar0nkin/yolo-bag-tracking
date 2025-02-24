@@ -1,2 +1,6 @@
+# python
 venv
+__pycache__
+
+# ultralytics
 runs
